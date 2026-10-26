@@ -155,13 +155,17 @@ public class AudioManager : MonoBehaviour {
     }
     
     private void _cleanUp() {
-        foreach (var eventInstance in _eventInstances) {
-            eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-            eventInstance.release();
+        if (_eventInstances.Count < 0) {
+            foreach (var eventInstance in _eventInstances) {
+                eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                eventInstance.release();
+            }
         }
 
-        foreach (var eventEmitter in _eventEmitters) {
-            eventEmitter.Stop();
+        if (_eventEmitters.Count < 0) {
+            foreach (var eventEmitter in _eventEmitters) {
+                eventEmitter.Stop();
+            }
         }
     }
     
