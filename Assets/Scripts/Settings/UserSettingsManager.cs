@@ -1,7 +1,7 @@
 using UnityEngine;
 
 namespace Settings {
-    public class SettingsManager : MonoBehaviour {
+    public class UserSettingsManager : MonoBehaviour {
         
     }
 }
