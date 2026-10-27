@@ -27,16 +27,6 @@
                     "priority": 0
                 },
                 {
-                    "name": "PauseGame",
-                    "type": "Button",
-                    "id": "ce479fee-b687-45c6-9243-b160a5498a1e",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false,
-                    "priority": 0
-                },
-                {
                     "name": "ThrowBone",
                     "type": "Button",
                     "id": "e49d3267-e30e-4a4a-86ca-1e7c0fc2d2a4",
@@ -232,28 +222,6 @@
                     "processors": "",
                     "groups": ";Gamepad",
                     "action": "ThrowBone",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "7502d5ba-96d7-4db4-a9ae-263b7c0669c1",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "PauseGame",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9f4688f4-7a63-4d19-a314-afb75c3291c5",
-                    "path": "<Gamepad>/select",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "PauseGame",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

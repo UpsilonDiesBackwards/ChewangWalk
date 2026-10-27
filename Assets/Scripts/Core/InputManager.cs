@@ -22,7 +22,6 @@ public class InputManager : MonoBehaviour {
     public Vector2 Move { get; private set; }
 
     // Buttons
-    public bool PauseGamePressed { get; private set; }
     public bool ThrowBonePressed { get; private set; }
 
     private void OnEnable() {
@@ -57,6 +56,10 @@ public class InputManager : MonoBehaviour {
         }
     }
 
+    private InputControllerType _getControlTypeFromDevice(Gamepad current) {
+        throw new NotImplementedException();
+    }
+
     private void _loadInputActions() {
         foreach (var map in inputActions.actionMaps) {
             map.Enable();
@@ -64,7 +67,6 @@ public class InputManager : MonoBehaviour {
     }
 
     private void LateUpdate() {
-        PauseGamePressed = false;
         ThrowBonePressed = false;
     }
 
@@ -74,17 +76,9 @@ public class InputManager : MonoBehaviour {
 
     private void OnMove(InputValue value) => Move = value.Get<Vector2>();
 
-    private void OnPauseGame(InputValue value) {
-        if (value.isPressed) PauseGamePressed = true;
-    }
-
-    private void OnThrowBone(InputValue value) {
+    private void OnThrowBonePressed(InputValue value) {
         if (value.isPressed) ThrowBonePressed = true;
     }
-    
-    /*
-     * Cursor Logic
-     */
 
     private bool _cursorDisabled;
     private bool _cursorState = true;
