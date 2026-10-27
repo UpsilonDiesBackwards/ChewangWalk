@@ -1,4 +1,3 @@
-using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.XR;
 
@@ -17,7 +16,7 @@ public class DogStateMachine : MonoBehaviour
     public Dog dog { get; private set; }
     public DogState currentState { get; private set; }
 
-    void awake()
+    void Awake()
     {
         dog = GetComponent<Dog>();
 
@@ -49,14 +48,5 @@ public class DogStateMachine : MonoBehaviour
         currentState = newState;
         currentStateName = newState.Name;
         currentState.Enter();
-    }
-
-    void OnDebugSelected()
-    {
-        patrol.Debug(transform);
-        chase.Debug(transform);
-        search.Debug(transform);
-        track.Debug(transform);
-        attack.Debug(transform);
     }
 }

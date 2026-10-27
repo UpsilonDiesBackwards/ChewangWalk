@@ -19,8 +19,8 @@ public class TrackState : DogState
         
     }
 
-    public override void Debug(Transform owner)
+    public bool PlayerSmelt()
     {
-        
+        return false;
     }
 }

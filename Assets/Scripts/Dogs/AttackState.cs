@@ -18,9 +18,4 @@ public class AttackState : DogState
     {
         
     }
-
-    public override void Debug(Transform owner)
-    {
-        
-    }
 }

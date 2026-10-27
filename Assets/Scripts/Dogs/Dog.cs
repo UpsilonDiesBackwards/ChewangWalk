@@ -44,7 +44,7 @@ public class Dog : MonoBehaviour
         agent.ResetPath();
     }
     
-    public bool Arrived => !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance && (!agent.hasPath || agent.velocity.sqrMagnitude < 0.01f);
+    public bool arrived => !agent.pathPending && agent.remainingDistance <= agent.stoppingDistance && (!agent.hasPath || agent.velocity.sqrMagnitude < 0.01f);
     public float speed => agent.velocity.magnitude;
     
     // Update is called once per frame

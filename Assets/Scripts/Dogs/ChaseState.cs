@@ -19,8 +19,8 @@ public class ChaseState : DogState
         
     }
 
-    public override void Debug(Transform owner)
+    public bool PlayerSpotted()
     {
-        
+        return false;
     }
 }

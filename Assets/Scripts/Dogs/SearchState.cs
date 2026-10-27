@@ -18,9 +18,4 @@ public class SearchState : DogState
     {
         
     }
-
-    public override void Debug(Transform owner)
-    {
-        
-    }
 }
