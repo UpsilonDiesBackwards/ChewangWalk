@@ -1,0 +1,9 @@
+﻿<Solution>
+  <Project Path="FMODUnity.csproj" />
+  <Project Path="FMODUnityEditor.csproj" />
+  <Project Path="DOTween.Modules.csproj" />
+  <Project Path="FMODUnityResonanceEditor.csproj" />
+  <Project Path="FMODUnityResonance.csproj" />
+  <Project Path="FMODUnityHaptics.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
+</Solution>
