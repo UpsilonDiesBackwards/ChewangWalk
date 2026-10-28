@@ -15,7 +15,7 @@ public class SearchState : DogState
     public float searchProximityRange = 10f;
     public float searchSightRange = 40f;
     [Tooltip("this is the full range of the vision cone so for example 180 means the dog can see 90 degrees both ways")]
-    public float searchAngleRange = 360f;
+    public float searchAngleRange = 180f;
     public float searchSmellRange = 10f;
 
     Vector3 searchCenter;

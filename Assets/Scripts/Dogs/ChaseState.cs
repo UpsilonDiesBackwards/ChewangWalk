@@ -13,7 +13,7 @@ public class ChaseState : DogState
     float sightTimer;
     public float chaseProximityRange = 10f;
     public float chaseSightRange = 40f;
-    public float chaseAngleRange = 360f;
+    public float chaseAngleRange = 180f;
     
     enum Phase { sighted, losing }
     Phase phase;
