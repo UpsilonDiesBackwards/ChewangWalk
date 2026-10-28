@@ -8,7 +8,6 @@ public class AudioManager : MonoBehaviour {
     private static AudioManager _instance { get; set; }
 
     [SerializeField] private EventReference UIClick;
-    [SerializeField] private EventReference UIToggle;
     
     private Coroutine _fadeCoroutine;
 
@@ -145,12 +144,6 @@ public class AudioManager : MonoBehaviour {
     public void PlayUIClick() {
         if (!UIClick.IsNull) {
             RuntimeManager.PlayOneShot(UIClick);
-        }
-    }
-
-    public void PlayUIToggle() {
-        if (!UIToggle.IsNull) {
-            RuntimeManager.PlayOneShot(UIToggle);
         }
     }
     
