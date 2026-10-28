@@ -26,11 +26,13 @@ public class AudioManager : MonoBehaviour {
     }
 
     private void Awake() {
-        if (_instance == null && _instance != this) {
+        if (_instance != null && _instance != this) {
             Destroy(gameObject);
             return;
         }
-        
+    
+        _instance = this;
+
         _eventInstances = new List<EventInstance>();
         _eventEmitters = new List<StudioEventEmitter>();
 
@@ -147,22 +149,25 @@ public class AudioManager : MonoBehaviour {
         }
     }
     
-    private void _cleanUp() {
-        if (_eventInstances.Count < 0) {
-            foreach (var eventInstance in _eventInstances) {
-                eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-                eventInstance.release();
-            }
-        }
-
-        if (_eventEmitters.Count < 0) {
-            foreach (var eventEmitter in _eventEmitters) {
-                eventEmitter.Stop();
-            }
-        }
-    }
-    
-    private void OnDestroy() {
-        _cleanUp();
-    }
+    // private void _cleanUp() {
+    //     if (_eventInstances.Count < 0) {
+    //         foreach (var eventInstance in _eventInstances) {
+    //             eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+    //             eventInstance.release();
+    //         }
+    //     }
+    //     else {
+    //         return;
+    //     }
+    //
+    //     if (_eventEmitters.Count < 0) {
+    //         foreach (var eventEmitter in _eventEmitters) {
+    //             eventEmitter.Stop();
+    //         }
+    //     }
+    // }
+    //
+    // private void OnDestroy() {
+    //     _cleanUp();
+    // }
 }

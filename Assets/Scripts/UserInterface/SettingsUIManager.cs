@@ -9,7 +9,7 @@ public class SettingsUIManager : MonoBehaviour {
 
     private SettingsBinder _volumeBinder;
     private const string VolumePrefsKey = "Volume";
-
+    
     private void Awake() {
         if (volumeSlider != null) {
             _volumeBinder = volumeSlider.GetComponent<SettingsBinder>();
@@ -24,7 +24,12 @@ public class SettingsUIManager : MonoBehaviour {
                 volumeSlider.onValueChanged.AddListener(OnVolumeChanged);
             }
 
-            AudioManager.Instance.UpdateVcaVolume("Master", savedVolume);
+            if (AudioManager.Instance != null) {
+                AudioManager.Instance.UpdateVcaVolume("Master", savedVolume);
+            }
+            else {
+                Debug.Log("Audio Manager not found");
+            }
         }
     }
 

@@ -47,8 +47,7 @@ public class InputManager : MonoBehaviour {
         }
 
         _instance = this;
-
-        DontDestroyOnLoad(gameObject);
+        
         _loadInputActions();
 
         if (Gamepad.current != null) {
