@@ -87,9 +87,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        //Checking the value every frame for now, might update to only check on input
-        //Vector2 moveVector = _moveAction.ReadValue<Vector2>();
-
         Vector2 moveV = _moveAction.ReadValue<Vector2>();
         
         if (moveV.x > 0 || moveV.y > 0 || moveV.x <0 || moveV.y <0  )
@@ -108,6 +105,7 @@ public class PlayerController : MonoBehaviour
             ThrowBone();
         }
 
+        //Testing if the values change
         //foreach (string i in boneNames)
         //{
         //    ChangeDictionaryValues(i, false);
@@ -126,6 +124,11 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void Jump()
+    {
+        //add jump when input system issue is fixed
+    }
+
     //Scale number of bones to percentage of speed (For testing purposes this is just set to 0.15 per lost bone
     public float ConvertedSpeed()
     {
@@ -138,7 +141,8 @@ public class PlayerController : MonoBehaviour
                 multiplier = multiplier - GetMultiplierValues(i);
             }
         }
-        return 1f;
+
+        return multiplier;
     }
 
     //Call to update the most recent bone lost
@@ -176,18 +180,36 @@ public class PlayerController : MonoBehaviour
         {
             //throw left arm
             //Set this up last
+            ChangeDictionaryValues("Left Arm", false);
         }
 
         else
         {
             //throw right arm
+            ChangeDictionaryValues("Right Arm", true);
         }
 
     }
 
-    public void PickUpBone()
+    public void PickUpBone(string pickedUp)
     {
         //should just be based off of collision, unnecessary to add button
+        //should always be true if you're picking this up
+        ChangeDictionaryValues(pickedUp, true);
+
+        ShowHideBone(pickedUp);
+
+    }
+
+    public void ShowHideBone(string toChange)
+    {
+        //Function to show/hide the passed in bone by checking the dictionary value
+        bool isShown = CheckDictionaryValue(toChange);
+        if (isShown)
+        {
+            //set bone visibility to the same as isShown
+        }
+
     }
 
     //use to call any functions necessary to end the game 
