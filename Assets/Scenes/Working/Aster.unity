@@ -231,6 +231,7 @@ GameObject:
   - component: {fileID: 780799166}
   - component: {fileID: 780799172}
   - component: {fileID: 780799171}
+  - component: {fileID: 780799173}
   m_Layer: 0
   m_Name: PlaceholderPlayer
   m_TagString: Untagged
@@ -368,13 +369,33 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 780799165}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96a86aa8c445b0149ab0de0b31ab0a8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharacterController
+  playerBones: []
+  boneWeaknessValues:
+  - key: Left Arm
+    value: 0.15
+  - key: Right Arm
+    value: 0.15
+  - key: Left Leg
+    value: 0.15
+  - key: Right Leg
+    value: 0.15
+  - key: Torso
+    value: 0.15
+  - key: Head
+    value: 0.15
   controller: {fileID: 780799171}
   thisObject: {fileID: 780799165}
+  rightArm: {fileID: 0}
+  leftArm: {fileID: 0}
+  rightLeg: {fileID: 0}
+  leftLeg: {fileID: 0}
+  Torso: {fileID: 0}
+  Head: {fileID: 0}
   MovementSpeed: 10
 --- !u!143 &780799172
 CharacterController:
@@ -401,6 +422,53 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &780799173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780799165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96a86aa8c445b0149ab0de0b31ab0a8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  playerBones:
+  - key: Left Arm
+    value: 1
+  - key: Right Arm
+    value: 1
+  - key: Left Leg
+    value: 1
+  - key: Right Leg
+    value: 1
+  - key: Torso
+    value: 1
+  - key: Head
+    value: 1
+  boneWeaknessValues:
+  - key: Left Arm
+    value: 0.15
+  - key: Right Arm
+    value: 0.15
+  - key: Left Leg
+    value: 0.15
+  - key: Right Leg
+    value: 0.15
+  - key: Torso
+    value: 0.15
+  - key: Head
+    value: 0.15
+  controller: {fileID: 780799171}
+  thisObject: {fileID: 780799165}
+  rightArm: {fileID: 0}
+  leftArm: {fileID: 0}
+  rightLeg: {fileID: 0}
+  leftLeg: {fileID: 0}
+  Torso: {fileID: 0}
+  Head: {fileID: 0}
+  MovementSpeed: 10
 --- !u!1 &1842530522
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,7 @@
 using DG.Tweening;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -20,10 +22,45 @@ public enum Bones
 //I am well aware this could be named better but i am rusty and forgot this was already a component name
 public class PlayerController : MonoBehaviour
 {
+    //Stores the bone name associated with whether or not it is still attached
+    [SerializeField] private Dictionary<string, bool> playerBones = new Dictionary<string, bool>()
+    {
+        {"Left Arm", true},
+        {"Right Arm", true},
+        {"Left Leg", true},
+        {"Right Leg", true},
+        {"Torso", true},
+        {"Head", true }
+    };
+
+    //Stores the name associated with the amount to be taken off the default 1f speed multiplier depending on which limbs are missing
+    [SerializeField]
+    private Dictionary<string, float> boneWeaknessValues = new Dictionary<string, float>()
+    {
+        {"Left Arm", 0.15f},
+        {"Right Arm", 0.15f},
+        {"Left Leg", 0.15f},
+        {"Right Leg", 0.15f},
+        {"Torso", 0.15f},
+        {"Head", 0.15f }
+    };
+
+    private List<string> boneNames = new List<string>() {"Left Arm", "Right Arm", "Left Leg", "Right Leg", "Torso", "Head"};
+
+
     [Header("Adjustable Variables (Testing Only)")]
     [Tooltip("Current characters CharacterController")]
     public PlayerController controller;
     public GameObject thisObject;
+
+    [Header("Bones - Not currently set up for use")]
+    //placeholder either to use or to change types later 
+    public GameObject rightArm;
+    public GameObject leftArm;
+    public GameObject rightLeg;
+    public GameObject leftLeg;
+    public GameObject Torso;
+    public GameObject Head;
 
     //Public
     [Tooltip("Adjust Movement Speed Multiplier")]
@@ -31,14 +68,17 @@ public class PlayerController : MonoBehaviour
 
     //Input Actions (To be changed later)
     private InputAction _moveAction;
+    private InputAction _throwAction;
 
     //private
-    private Bones LastLostBone = Bones.None; 
+    private Bones LastLostBone = Bones.None;
+    private bool _hasThrownArm = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         _moveAction = InputSystem.actions.FindAction("Move");
+        _throwAction = InputSystem.actions.FindAction("ThrowBone");
 
         UnityEngine.Cursor.visible = false;
     }
@@ -62,6 +102,18 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Dead");
         }
+
+        if (_throwAction.WasReleasedThisFrame())
+        {
+            ThrowBone();
+        }
+
+        //foreach (string i in boneNames)
+        //{
+        //    ChangeDictionaryValues(i, false);
+
+        //}
+
     }
 
     //Basic Movement script
@@ -72,86 +124,70 @@ public class PlayerController : MonoBehaviour
 
         thisObject.transform.position = new Vector3(thisObject.transform.position.x + move.x, thisObject.transform.position.y + move.y, thisObject.transform.position.z + move.z);
 
-        
-        //thisObject.transform.position = move;
-
-
     }
 
-    //Scale number of bones to percentage of speed
-    //Later change to reflect weight of losing one limb over using the other
-    //e.g. losing a leg would be far more detrimental to movement over losing an arm, and losing the second arm would have a worse effect than losing the first 
-    //What if you lose a head (Death 2)
-    //To be called when you lose another bone
+    //Scale number of bones to percentage of speed (For testing purposes this is just set to 0.15 per lost bone
     public float ConvertedSpeed()
     {
-        //Leave commented for now
-        //switch (LastLostBone) 
-        //{
-        //    //Can be adjusted to remove bones as necessary
-        //    case Bones.None:
-        //        return 1f;
-        //    case Bones.Leg1:
-        //        return 0.8f;
-        //    case Bones.Leg2:
-        //        return 0.6f;
-        //    case Bones.Arm1:
-        //        return 0.4f;
-        //    case Bones.Arm2:
-        //        return 0.2f;
-        //    case Bones.Torso:
-        //        //You're now just a head
-        //        break;
-        //    case Bones.Head:
-        //        //You're dead now
-        //        //It shouldn't reach here
-        //        break;
-        //}
-
+        float multiplier = 1.0f;
+        foreach (string i in boneNames)
+        {
+            bool isAttached = CheckDictionaryValue(i);
+            if (!isAttached)
+            {
+                multiplier = multiplier - GetMultiplierValues(i);
+            }
+        }
         return 1f;
     }
 
-    public void ChangeNumberOfBones()
+    //Call to update the most recent bone lost
+    public void ChangeDictionaryValues(string lostBone, bool status)
     {
-        switch (LastLostBone)
-        {
-            //Can be adjusted to remove bones as necessary
-            case Bones.None:
-                LastLostBone = Bones.Leg1;
-                Debug.Log("Lost one bone");
-                break;
-            case Bones.Leg1:
-                LastLostBone = Bones.Leg2;
-                Debug.Log("Lost second bone");
-                break;
-            case Bones.Leg2:
-                LastLostBone = Bones.Arm1;
-                Debug.Log("Lost third bone");
-                break;
-            case Bones.Arm1:
-                LastLostBone = Bones.Arm2;
-                Debug.Log("Lost fourth bone");
-                break;
-            case Bones.Arm2:
-                LastLostBone = Bones.Torso;
-                Debug.Log("Lost fifth bone");
-                break;
-            case Bones.Torso:
-                LastLostBone = Bones.Head;
-                Debug.Log("Lost final bone");
-                EndGame();
-                break;
-            case Bones.Head:
-                //You're dead now
-                //It shouldn't reach here
-                break;
-        }
+
+        //Currently just takes the bone and sets the same one to false this is for testing only 
+        //searches the dictionary for the key
+        bool boneStatus = playerBones.Single(s => s.Key == lostBone).Value;
+        Debug.Log(boneStatus);
+
+        //sets [key] to value
+        playerBones[lostBone] = status;
+        boneStatus = playerBones.Single(s => s.Key == lostBone).Value;
+        Debug.Log(lostBone + " : " + boneStatus);
+    }
+
+    public float GetMultiplierValues(string lostBone)
+    {
+        return boneWeaknessValues[lostBone];
+    }
+
+    public bool CheckDictionaryValue(string boneName)
+    {
+        return playerBones.Single(s => s.Key == boneName).Value;
     }
 
     //If the bone hits a dog, set as true and only temporarily return to 
     public void ThrowBone()
     {
         //throw
+        Debug.Log("Bone Thrown");
+
+        if (CheckDictionaryValue("Left Arm"))
+        {
+            //throw left arm
+            //Set this up last
+        }
+
+        else
+        {
+            //throw right arm
+        }
+
+    }
+
+    public void PickUpBone()
+    {
+        //should just be based off of collision, unnecessary to add button
     }
 
     //use to call any functions necessary to end the game 
