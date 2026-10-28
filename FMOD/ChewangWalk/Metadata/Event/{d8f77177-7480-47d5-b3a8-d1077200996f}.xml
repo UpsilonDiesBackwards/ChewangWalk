@@ -139,6 +139,9 @@
 		<property name="length">
 			<value>1.756435866935153</value>
 		</property>
+		<property name="volume">
+			<value>-6</value>
+		</property>
 		<property name="pitch">
 			<value>-8</value>
 		</property>
