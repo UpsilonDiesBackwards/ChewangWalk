@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 
 public class PausedMenuUIManager : MonoBehaviour {
+    public SettingsUIManager settingsUIManager;
+    
     private void OnEnable() {
         Show();
     }
@@ -21,6 +23,8 @@ public class PausedMenuUIManager : MonoBehaviour {
 
     public void OpenSettings() {
         _hide();
+        
+        settingsUIManager.gameObject.SetActive(true);
     }
     
     public void QuitToMainMenu() {

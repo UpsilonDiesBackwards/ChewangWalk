@@ -6,7 +6,9 @@ public class UIIManager : MonoBehaviour {
     public PausedMenuUIManager _pausedMenuUIManager;
 
     private void Update() {
-        if (InputManager.Instance.PauseGamePressed) {
+        if (InputManager.Instance.PauseGamePressed && 
+            !_pausedMenuUIManager.settingsUIManager.gameObject.activeSelf) {
+            
             _pausedMenuUIManager.gameObject.SetActive(!_pausedMenuUIManager.gameObject.activeSelf);
         }
     }
