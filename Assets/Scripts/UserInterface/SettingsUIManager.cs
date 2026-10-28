@@ -6,7 +6,7 @@ public class SettingsUIManager : MonoBehaviour {
     [Header("References")]
     [SerializeField] private PausedMenuUIManager pausedMenuUIManager;
     [SerializeField] private Slider volumeSlider;
-
+    
     private SettingsBinder _volumeBinder;
     private const string VolumePrefsKey = "Volume";
     

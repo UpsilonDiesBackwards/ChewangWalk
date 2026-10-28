@@ -66,6 +66,12 @@ public class AudioManager : MonoBehaviour {
         RuntimeManager.PlayOneShot(sound, worldPos);
     }
     
+    public void PlayOneShot(EventReference sound) {
+        if (!sound.IsNull) {
+            RuntimeManager.PlayOneShot(sound);
+        }
+    }
+    
     public void FadeOutAllAudio(float duration) {
         if (_fadeCoroutine != null) {
             StopCoroutine(_fadeCoroutine);
@@ -149,25 +155,25 @@ public class AudioManager : MonoBehaviour {
         }
     }
     
-    // private void _cleanUp() {
-    //     if (_eventInstances.Count < 0) {
-    //         foreach (var eventInstance in _eventInstances) {
-    //             eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
-    //             eventInstance.release();
-    //         }
-    //     }
-    //     else {
-    //         return;
-    //     }
-    //
-    //     if (_eventEmitters.Count < 0) {
-    //         foreach (var eventEmitter in _eventEmitters) {
-    //             eventEmitter.Stop();
-    //         }
-    //     }
-    // }
-    //
-    // private void OnDestroy() {
-    //     _cleanUp();
-    // }
+    private void _cleanUp() {
+        if (_eventInstances.Count < 0) {
+            foreach (var eventInstance in _eventInstances) {
+                eventInstance.stop(FMOD.Studio.STOP_MODE.IMMEDIATE);
+                eventInstance.release();
+            }
+        }
+        else {
+            return;
+        }
+    
+        if (_eventEmitters.Count < 0) {
+            foreach (var eventEmitter in _eventEmitters) {
+                eventEmitter.Stop();
+            }
+        }
+    }
+    
+    private void OnDestroy() {
+        _cleanUp();
+    }
 }
