@@ -137,7 +137,7 @@ public class AudioManager : MonoBehaviour {
         if (vca.isValid()) {
             vca.setVolume(value);
         } else {
-            Debug.LogWarning($"FMOD: VCA 'vca:/{vcaName}' not found or banks not loaded.");
+            Debug.LogWarning($"VCA 'vca:/{vcaName}' not found or banks not loaded");
         }
     }
     
