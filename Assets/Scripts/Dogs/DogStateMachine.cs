@@ -5,6 +5,7 @@ using UnityEngine.XR;
 public class DogStateMachine : MonoBehaviour
 {
     public Transform player;
+    public Transform dogBed;
 
     public PatrolState patrol = new PatrolState();
     public ChaseState chase = new ChaseState();
@@ -18,6 +19,12 @@ public class DogStateMachine : MonoBehaviour
 
     void Awake()
     {
+        if (player == null)
+        {
+            GameObject playerObject = GameObject.FindWithTag("Player");
+            if (playerObject != null) player = playerObject.transform;
+        }
+        
         dog = GetComponent<Dog>();
 
         patrol.Init(this);

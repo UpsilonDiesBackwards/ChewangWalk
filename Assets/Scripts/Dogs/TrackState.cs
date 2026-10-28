@@ -19,7 +19,7 @@ public class TrackState : DogState
         
     }
 
-    public bool PlayerSmelt()
+    public bool PlayerSmelt(float smellRange)
     {
         return false;
     }

@@ -4,15 +4,19 @@ using UnityEngine.AI;
 [System.Serializable]
 public class PatrolState : DogState
 {
-    public float maxDistance = 10f;
+    public float maxDistance = 100f;
     public float minDistance = 2f;
-    public Transform dogBed;
     public float minIdleTime = 1f;
-    public float maxIdleTime = 5f;
+    public float maxIdleTime = 2.5f;
     public float timeout = 20f;
     public float navMeshRadius = 1f;
     public int maxAttempts = 10;
     public float patrolSpeed = 5f;
+    public float patrolProximityRange = 5f;
+    public float patrolSightRange = 20f;
+    [Tooltip("this is the full range of the vision cone so for example 180 means the dog can see 90 degrees both ways")]
+    public float patrolAngleRange = 180f;
+    public float patrolSmellRange = 5f;
     
     enum Phase { Idle, Moving }
 
@@ -31,13 +35,13 @@ public class PatrolState : DogState
     public override void Tick()
     {
         // Handles state switching
-        if (stateMachine.chase.PlayerSpotted())
+        if (stateMachine.chase.PlayerSpotted(patrolProximityRange, patrolSightRange, patrolAngleRange))
         {
             stateMachine.SetState(stateMachine.chase);
             return;
         }
 
-        if (stateMachine.track.PlayerSmelt())
+        if (stateMachine.track.PlayerSmelt(patrolSmellRange))
         {
             stateMachine.SetState(stateMachine.track);
             return;
@@ -81,6 +85,7 @@ public class PatrolState : DogState
 
     public bool FindRandomPoint(out Vector3 target)
     {
+        Transform dogBed = stateMachine.dogBed;
         NavMeshQueryFilter queryFilter = dog.queryFilter;
         Vector3 start = dog.dogAgent.nextPosition;
         Vector3 center = dogBed.position;

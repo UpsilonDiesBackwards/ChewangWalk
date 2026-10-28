@@ -176,4 +176,21 @@ MonoBehaviour:
     navMeshRadius: 1
     maxAttempts: 10
     patrolSpeed: 5
+    patrolProximityRange: 0.5
+    patrolSightRange: 20
+    patrolAngleRange: 180
+  chase:
+    dogHeight: 0.5
+    visionBlockers:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    chaseSpeed: 10
+    repathInterval: 0.25
+  attack:
+    dogHeight: 0.5
+    blockers:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    attackRange: 0.1
+    attackAngle: 90
   currentStateName: 
