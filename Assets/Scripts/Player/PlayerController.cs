@@ -251,7 +251,7 @@ public class PlayerController : MonoBehaviour
         ChangeDictionaryValues(pickedUp, true);
 
         ShowHideBone(pickedUp);
-
+        ShowBoneOnPickup(pickedUp);
     }
 
     //Old (I would change name but I dont want to break everything, this is to hide bones)
