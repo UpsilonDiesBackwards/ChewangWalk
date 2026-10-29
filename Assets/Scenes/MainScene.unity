@@ -163511,8 +163511,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 8.32, y: 9.3, z: 6.66}
-  m_Center: {x: 0, y: 4.53, z: -4.96}
+  m_Size: {x: 5.97, y: 13.2, z: 5.1}
+  m_Center: {x: 0, y: 6.31, z: 0.39}
 --- !u!54 &1709797455
 Rigidbody:
   m_ObjectHideFlags: 0
