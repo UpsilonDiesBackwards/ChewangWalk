@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{93b99aeb-47a6-4796-a7fc-954230b4c6b9}">
+		<property name="assetPath">
+			<value>Music/Darkest Child.mp3</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>238.68081632653062</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{42ce657b-32f7-4fc9-b41c-39001ffd052d}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{1625970b-c77f-47d8-92e1-92534d007a01}">
+		<property name="assetPath">
+			<value>Dog/625501__abhisheky948__animal-dog-bark-and-growl-01.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>2.7679166666666668</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{42ce657b-32f7-4fc9-b41c-39001ffd052d}</destination>
+		</relationship>
+	</object>
+</objects>

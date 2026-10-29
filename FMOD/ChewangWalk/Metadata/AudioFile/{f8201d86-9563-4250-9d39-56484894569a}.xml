@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="AudioFile" id="{f8201d86-9563-4250-9d39-56484894569a}">
+		<property name="assetPath">
+			<value>Owchie/owchie.mp3</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3.9444897959183671</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{42ce657b-32f7-4fc9-b41c-39001ffd052d}</destination>
+		</relationship>
+	</object>
+</objects>

@@ -8,7 +8,6 @@ public class AudioManager : MonoBehaviour {
     private static AudioManager _instance { get; set; }
 
     [SerializeField] private EventReference UIClick;
-    [SerializeField] private EventReference UIToggle;
     
     private Coroutine _fadeCoroutine;
 
@@ -27,11 +26,13 @@ public class AudioManager : MonoBehaviour {
     }
 
     private void Awake() {
-        if (_instance == null && _instance != this) {
+        if (_instance != null && _instance != this) {
             Destroy(gameObject);
             return;
         }
-        
+    
+        _instance = this;
+
         _eventInstances = new List<EventInstance>();
         _eventEmitters = new List<StudioEventEmitter>();
 
@@ -63,6 +64,12 @@ public class AudioManager : MonoBehaviour {
 
     public void PlayOneShot(EventReference sound, Vector3 worldPos) {
         RuntimeManager.PlayOneShot(sound, worldPos);
+    }
+    
+    public void PlayOneShot(EventReference sound) {
+        if (!sound.IsNull) {
+            RuntimeManager.PlayOneShot(sound);
+        }
     }
     
     public void FadeOutAllAudio(float duration) {
@@ -138,19 +145,13 @@ public class AudioManager : MonoBehaviour {
         if (vca.isValid()) {
             vca.setVolume(value);
         } else {
-            Debug.LogWarning($"FMOD: VCA 'vca:/{vcaName}' not found or banks not loaded.");
+            Debug.LogWarning($"VCA 'vca:/{vcaName}' not found or banks not loaded");
         }
     }
     
     public void PlayUIClick() {
         if (!UIClick.IsNull) {
             RuntimeManager.PlayOneShot(UIClick);
-        }
-    }
-
-    public void PlayUIToggle() {
-        if (!UIToggle.IsNull) {
-            RuntimeManager.PlayOneShot(UIToggle);
         }
     }
     
@@ -161,7 +162,10 @@ public class AudioManager : MonoBehaviour {
                 eventInstance.release();
             }
         }
-
+        else {
+            return;
+        }
+    
         if (_eventEmitters.Count < 0) {
             foreach (var eventEmitter in _eventEmitters) {
                 eventEmitter.Stop();
