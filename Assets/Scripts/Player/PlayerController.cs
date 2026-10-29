@@ -242,40 +242,35 @@ public class PlayerController : MonoBehaviour
     {
         //Function to show/hide the passed in bone by checking the dictionary value
         bool isShown = CheckDictionaryValue(toChange);
-        if (isShown)
+        if (toChange == "Right Arm")
         {
-            if (toChange == "Right Arm")
-            {
-                rightArm.SetActive(false);
-            }
+            rightArm.SetActive(isShown);
+        }
 
-            else if (toChange == "Left Arm")
-            {
-                leftArm.SetActive(false);
-            }
+        else if (toChange == "Left Arm")
+        {
+            leftArm.SetActive(isShown);
+        }
 
-            else if (toChange == "Left Leg")
-            {
-                leftLeg.SetActive(false);
-            }
+        else if (toChange == "Left Leg")
+        {
+            leftLeg.SetActive(isShown);
+        }
 
-            else if (toChange == "Right Leg")
-            {
-                rightLeg.SetActive(false);
-            }
+        else if (toChange == "Right Leg")
+        {
+            rightLeg.SetActive(isShown);
+        }
 
-            else if (toChange == "Torso")
-            {
-                Ribs.SetActive(false);
-                Hips.SetActive(false);
-            }
+        else if (toChange == "Torso")
+        {
+            Ribs.SetActive(isShown);
+            Hips.SetActive(isShown);
+        }
 
-            else if (toChange == "Head")
-            {
-                Head.SetActive(false);
-            }
-
-            //set bone visibility to the same as isShown
+        else if (toChange == "Head")
+        {
+            Head.SetActive(isShown);
         }
 
     }
