@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
     public float MovementSpeed = 10f;
     public float JumpForce = 1f;
     public Transform CameraDirection;
+    public float pickupRange = 10f;
 
     [Header("Bones - Put the bones in here to hide them")]
     //placeholder either to use or to change types later 
@@ -79,6 +80,7 @@ public class PlayerController : MonoBehaviour
     private InputAction _moveAction;
     private InputAction _throwAction;
     private InputAction _jumpAction;
+    private InputAction _pickUpAction;
 
     private bool isGrounded;
     private bool hasJumpStarted;
@@ -93,6 +95,7 @@ public class PlayerController : MonoBehaviour
         _moveAction = InputSystem.actions.FindAction("Move");
         _throwAction = InputSystem.actions.FindAction("ThrowBone");
         _jumpAction = InputSystem.actions.FindAction("Jump");
+        _pickUpAction = InputSystem.actions.FindAction("PickUpBone");
 
         UnityEngine.Cursor.visible = false;
     }
@@ -117,6 +120,11 @@ public class PlayerController : MonoBehaviour
         if (_throwAction.WasReleasedThisFrame())
         {
             ThrowBone();
+        }
+
+        if (_pickUpAction.WasReleasedThisFrame())
+        {
+            TakeFromPile();
         }
 
         if (_jumpAction.IsPressed()&CheckIfGrounded())
@@ -275,6 +283,28 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    public void TakeFromPile()
+    {
+        string bone = " ";
+        
+        GameObject[] piles = GameObject.FindGameObjectsWithTag("bonePile");
+        BonePile[] bonePiles = new BonePile[piles.Length];
+        for (int i = 0; i < piles.Length; i++)
+        {
+            bonePiles[i] = piles[i].GetComponent<BonePile>();
+        }
+
+        foreach (BonePile pile in bonePiles)
+        {
+            Vector3 pilePosition =  pile.transform.position - transform.position;
+            if (pilePosition.magnitude < pickupRange)
+            {
+                pile.TakeBone(out bone);
+                PickUpBone(bone);
+            }
+        }
+    }
+    
     //use to call any functions necessary to end the game 
     public void EndGame()
     {

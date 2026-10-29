@@ -141,6 +141,16 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""initialStateCheck"": false,
                     ""priority"": 0
+                },
+                {
+                    ""name"": ""PickUpBone"",
+                    ""type"": ""Button"",
+                    ""id"": ""99f1ce41-3fa5-4562-b4f5-5ce4748d1416"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false,
+                    ""priority"": 0
                 }
             ],
             ""bindings"": [
@@ -361,6 +371,28 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f44f8446-e62b-4912-b25e-1d6f2b50f6b2"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""PickUpBone"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e7c3f7e0-0681-4e3c-8df8-c4f2532ed0d7"",
+                    ""path"": ""<XInputController>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""PickUpBone"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -963,6 +995,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player_PauseGame = m_Player.FindAction("PauseGame", throwIfNotFound: true);
         m_Player_ThrowBone = m_Player.FindAction("ThrowBone", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        m_Player_PickUpBone = m_Player.FindAction("PickUpBone", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1061,6 +1094,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_PauseGame;
     private readonly InputAction m_Player_ThrowBone;
     private readonly InputAction m_Player_Jump;
+    private readonly InputAction m_Player_PickUpBone;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1092,6 +1126,10 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Jump".
         /// </summary>
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/PickUpBone".
+        /// </summary>
+        public InputAction @PickUpBone => m_Wrapper.m_Player_PickUpBone;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1133,6 +1171,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @PickUpBone.started += instance.OnPickUpBone;
+            @PickUpBone.performed += instance.OnPickUpBone;
+            @PickUpBone.canceled += instance.OnPickUpBone;
         }
 
         /// <summary>
@@ -1159,6 +1200,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @PickUpBone.started -= instance.OnPickUpBone;
+            @PickUpBone.performed -= instance.OnPickUpBone;
+            @PickUpBone.canceled -= instance.OnPickUpBone;
         }
 
         /// <summary>
@@ -1494,6 +1538,13 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnJump(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "PickUpBone" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnPickUpBone(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.
