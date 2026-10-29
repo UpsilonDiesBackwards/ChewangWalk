@@ -1,8 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/FakeMainScene/NavMesh-NavMesh Surface.asset.meta
 guid: 50c090c5c90b31f49b7e6b307d0ffc3b
+========
+guid: 4e37c1e64e09a6c1e87960d69ce2c133
+>>>>>>>> dc005443faf1befef317445b65258b0bac6b47b8:Assets/New Terrain.asset.meta
 NativeFormatImporter:
   externalObjects: {}
-  mainObjectFileID: 23800000
+  mainObjectFileID: 15600000
   userData: 
   assetBundleName: 
   assetBundleVariant: 
