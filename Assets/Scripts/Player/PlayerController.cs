@@ -206,7 +206,7 @@ public class PlayerController : MonoBehaviour
         boneStatus = playerBones.Single(s => s.Key == lostBone).Value;
         Debug.Log(lostBone + " : " + boneStatus);
 
-        ShowHideBone(lostBone);
+        //ShowHideBone(lostBone);
     }
 
     public float GetMultiplierValues(string lostBone)
