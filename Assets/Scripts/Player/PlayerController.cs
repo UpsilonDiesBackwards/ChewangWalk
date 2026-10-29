@@ -250,35 +250,72 @@ public class PlayerController : MonoBehaviour
     {
         //Function to show/hide the passed in bone by checking the dictionary value
         bool isShown = CheckDictionaryValue(toChange);
-        if (toChange == "Right Arm")
-        {
-            rightArm.SetActive(isShown);
-        }
 
-        else if (toChange == "Left Arm")
+        if (!isShown)
         {
-            leftArm.SetActive(isShown);
-        }
+            if (toChange == "Right Arm")
+            {
+                rightArm.SetActive(false);
+            }
 
-        else if (toChange == "Left Leg")
-        {
-            leftLeg.SetActive(isShown);
-        }
+            else if (toChange == "Left Arm")
+            {
+                leftArm.SetActive(false);
+            }
 
-        else if (toChange == "Right Leg")
-        {
-            rightLeg.SetActive(isShown);
-        }
+            else if (toChange == "Left Leg")
+            {
+                leftLeg.SetActive(false);
+            }
 
-        else if (toChange == "Torso")
-        {
-            Ribs.SetActive(isShown);
-            Hips.SetActive(isShown);
-        }
+            else if (toChange == "Right Leg")
+            {
+                rightLeg.SetActive(false);
+            }
 
-        else if (toChange == "Head")
+            else if (toChange == "Torso")
+            {
+                Ribs.SetActive(false);
+                Hips.SetActive(false);
+            }
+
+            else if (toChange == "Head")
+            {
+                Head.SetActive(false);
+            }
+        }
+        else
         {
-            Head.SetActive(isShown);
+            if (toChange == "Right Arm")
+            {
+                rightArm.SetActive(true);
+            }
+
+            else if (toChange == "Left Arm")
+            {
+                leftArm.SetActive(true);
+            }
+
+            else if (toChange == "Left Leg")
+            {
+                leftLeg.SetActive(true);
+            }
+
+            else if (toChange == "Right Leg")
+            {
+                rightLeg.SetActive(true);
+            }
+
+            else if (toChange == "Torso")
+            {
+                Ribs.SetActive(true);
+                Hips.SetActive(true);
+            }
+
+            else if (toChange == "Head")
+            {
+                Head.SetActive(true);
+            }
         }
 
     }
