@@ -11,6 +11,7 @@ public class AttackState : DogState
     
     public override void Enter()
     {
+        /* unused at the moment - ignore
         PlayerController playerController = stateMachine.player.GetComponent<PlayerController>();
         if (playerController != null)
         {
@@ -71,6 +72,7 @@ public class AttackState : DogState
                 }
             }
         }
+        */
         
         Transform dogBed = stateMachine.dogBed;
         if (dogBed == null) stateMachine.SetState(stateMachine.search);
