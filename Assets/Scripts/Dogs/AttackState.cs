@@ -11,9 +11,78 @@ public class AttackState : DogState
     
     public override void Enter()
     {
-        /*
-         * triggers attack animation and player losing bone
-         */
+        PlayerController playerController = stateMachine.player.GetComponent<PlayerController>();
+        if (playerController != null)
+        {
+            Vector3 dogDirection = dog.transform.position - stateMachine.player.position;
+            float right = Vector3.Dot(stateMachine.player.right, dogDirection);
+            if (right > 0f)
+            {
+                if (playerController.CheckDictionaryValue("Right Leg"))
+                {
+                    playerController.ShowHideBone("Right Leg");
+                    playerController.ChangeDictionaryValues("Right Leg", false);
+                }
+                else if (playerController.CheckDictionaryValue("Left Leg"))
+                {
+                    playerController.ShowHideBone("Left Leg");
+                    playerController.ChangeDictionaryValues("Left Leg", false);
+                }
+                else if (playerController.CheckDictionaryValue("Right Arm"))
+                {
+                    playerController.ShowHideBone("Right Arm");
+                    playerController.ChangeDictionaryValues("Right Arm", false);
+                }
+                else if (playerController.CheckDictionaryValue("Left Arm"))
+                {
+                    playerController.ShowHideBone("Left Arm");
+                    playerController.ChangeDictionaryValues("Left Arm", false);
+                }
+                else if (playerController.CheckDictionaryValue("Torso"))
+                {
+                    playerController.ShowHideBone("Torso");
+                    playerController.ChangeDictionaryValues("Torso", false);
+                }
+                else
+                {
+                    playerController.ShowHideBone("Head");
+                    playerController.ChangeDictionaryValues("Head", false);
+                }
+            }
+            else
+            {
+                if (playerController.CheckDictionaryValue("Left Leg"))
+                {
+                    playerController.ShowHideBone("Left Leg");
+                    playerController.ChangeDictionaryValues("Left Leg", false);
+                }
+                else if (playerController.CheckDictionaryValue("Right Leg"))
+                {
+                    playerController.ShowHideBone("Right Leg");
+                    playerController.ChangeDictionaryValues("Right Leg", false);
+                }
+                else if (playerController.CheckDictionaryValue("Left Arm"))
+                {
+                    playerController.ShowHideBone("Left Arm");
+                    playerController.ChangeDictionaryValues("Left Arm", false);
+                }
+                else if (playerController.CheckDictionaryValue("Right Arm"))
+                {
+                    playerController.ShowHideBone("Right Arm");
+                    playerController.ChangeDictionaryValues("Right Arm", false);
+                }
+                else if (playerController.CheckDictionaryValue("Torso"))
+                {
+                    playerController.ShowHideBone("Torso");
+                    playerController.ChangeDictionaryValues("Torso", false);
+                }
+                else
+                {
+                    playerController.ShowHideBone("Head");
+                    playerController.ChangeDictionaryValues("Head", false);
+                }
+            }
+        }
         
         Transform dogBed = stateMachine.dogBed;
         if (dogBed == null) stateMachine.SetState(stateMachine.search);

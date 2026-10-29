@@ -33,16 +33,19 @@ public class UIIManager : MonoBehaviour {
         
         rupert.gameObject.SetActive(true);
 
+        rupert.sprite = ruperts[specificRupert];
+        
         if (specificRupert == 0) {
             AudioManager.Instance.PlayOneShot(rupertAudio_alt);
+            yield return new WaitForSeconds(3f);
+        
+            rupert.gameObject.SetActive(false);
         }
         else {
             AudioManager.Instance.PlayOneShot(rupertAudio);
         }
         
-        rupert.sprite = ruperts[specificRupert];
-
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.5f);
         
         rupert.gameObject.SetActive(false);
     }

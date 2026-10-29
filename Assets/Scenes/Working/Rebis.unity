@@ -215,7 +215,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: DogPrefab
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3158837798714234235, guid: 35612b0c746cdb948bfccbbbf6c380e4, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
