@@ -4,15 +4,15 @@ using UnityEngine.AI;
 [System.Serializable]
 public class ChaseState : DogState
 {
-    public float dogHeight = 0.5f;
+    public float dogHeight = 1f;
     public LayerMask visionBlockers = ~0;
-    public float chaseSpeed = 10f;
+    public float chaseSpeed = 20f;
     public float repathInterval = 0.25f;
     public float timeout = 0.1f;
     float repathTimer;
     float sightTimer;
-    public float chaseProximityRange = 10f;
-    public float chaseSightRange = 40f;
+    public float chaseProximityRange = 160f;
+    public float chaseSightRange = 80f;
     public float chaseAngleRange = 180f;
     
     enum Phase { sighted, losing }

@@ -166,31 +166,58 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DogStateMachine
   player: {fileID: 0}
+  dogBed: {fileID: 0}
   patrol:
-    maxDistance: 10
+    maxDistance: 100
     minDistance: 2
-    dogBed: {fileID: 0}
     minIdleTime: 1
-    maxIdleTime: 5
+    maxIdleTime: 2.5
     timeout: 20
-    navMeshRadius: 1
-    maxAttempts: 10
-    patrolSpeed: 5
-    patrolProximityRange: 0.5
-    patrolSightRange: 20
+    navMeshRadius: 20
+    maxAttempts: 25
+    patrolSpeed: 10
+    patrolProximityRange: 40
+    patrolSightRange: 80
     patrolAngleRange: 180
+    patrolSmellRange: 75
   chase:
-    dogHeight: 0.5
+    dogHeight: 1
     visionBlockers:
       serializedVersion: 2
       m_Bits: 4294967295
-    chaseSpeed: 10
+    chaseSpeed: 20
     repathInterval: 0.25
+    timeout: 0.1
+    chaseProximityRange: 160
+    chaseSightRange: 80
+    chaseAngleRange: 180
+  search:
+    maxDistance: 75
+    minDistance: 2
+    minIdleTime: 1
+    maxIdleTime: 2.5
+    timeout: 20
+    navMeshRadius: 1
+    maxAttempts: 10
+    searchSpeed: 7
+    searchProximityRange: 10
+    searchSightRange: 40
+    searchAngleRange: 180
+    searchSmellRange: 10
+  track:
+    trackSpeed: 2
+    trackProximityRange: 10
+    trackSightRange: 40
+    trackAngleRange: 180
+    trackSmellRange: 10
+    sniffInterval: 0.2
+    maxScentChecks: 10
+    dogHeight: 0.5
   attack:
     dogHeight: 0.5
     blockers:
       serializedVersion: 2
       m_Bits: 4294967295
-    attackRange: 0.1
+    attackRange: 2.5
     attackAngle: 90
   currentStateName: 
