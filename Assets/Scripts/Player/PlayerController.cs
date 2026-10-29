@@ -71,8 +71,14 @@ public class PlayerController : MonoBehaviour
     public GameObject Hips;
     public GameObject Head;
 
-    
-
+    [Header("Renderers - Alternative to method hiding the bones")]
+    public Renderer rightArmRender;
+    public Renderer leftArmRender;
+    public Renderer rightLegRender;
+    public Renderer leftLegRender;
+    public Renderer RibsRender;
+    public Renderer HipsRender;
+    public Renderer HeadRender;
 
     
 
@@ -199,6 +205,8 @@ public class PlayerController : MonoBehaviour
         playerBones[lostBone] = status;
         boneStatus = playerBones.Single(s => s.Key == lostBone).Value;
         Debug.Log(lostBone + " : " + boneStatus);
+
+        ShowHideBone(lostBone);
     }
 
     public float GetMultiplierValues(string lostBone)
@@ -246,78 +254,99 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    //Old (I would change name but I dont want to break everything, this is to hide bones)
     public void ShowHideBone(string toChange)
     {
         //Function to show/hide the passed in bone by checking the dictionary value
         bool isShown = CheckDictionaryValue(toChange);
 
-        if (!isShown)
+        if (isShown)
         {
             if (toChange == "Right Arm")
             {
-                rightArm.SetActive(false);
+                //rightArm.SetActive(false);
+                rightArmRender.enabled = false;
             }
 
             else if (toChange == "Left Arm")
             {
-                leftArm.SetActive(false);
+                //leftArm.SetActive(false);
+                leftArmRender.enabled = false;
             }
 
             else if (toChange == "Left Leg")
             {
-                leftLeg.SetActive(false);
+                //leftLeg.SetActive(false);
+                leftLegRender.enabled = false;
             }
 
             else if (toChange == "Right Leg")
             {
-                rightLeg.SetActive(false);
+                //rightLeg.SetActive(false);
+                rightLegRender.enabled = false;
             }
 
             else if (toChange == "Torso")
             {
-                Ribs.SetActive(false);
-                Hips.SetActive(false);
+                //Ribs.SetActive(false);
+                //Hips.SetActive(false);
+                RibsRender.enabled = false;
+                HipsRender.enabled = false;
             }
 
             else if (toChange == "Head")
             {
-                Head.SetActive(false);
+                //Head.SetActive(false);
+                HeadRender.enabled = false;
             }
         }
-        else
+    }
+
+    //new (showhide, except just the show - use only for showing on pickup )
+
+    public void ShowBoneOnPickup(string pickedUp)
+    {
+        
         {
-            if (toChange == "Right Arm")
+            if (pickedUp == "Right Arm")
             {
-                rightArm.SetActive(true);
+                //rightArm.SetActive(true);
+                rightArmRender.enabled = true;
             }
 
-            else if (toChange == "Left Arm")
+            else if (pickedUp == "Left Arm")
             {
-                leftArm.SetActive(true);
+                //leftArm.SetActive(true);
+                leftArmRender.enabled = true;
             }
 
-            else if (toChange == "Left Leg")
+            else if (pickedUp == "Left Leg")
             {
-                leftLeg.SetActive(true);
+                //leftLeg.SetActive(true);
+                leftLegRender.enabled = true;
             }
 
-            else if (toChange == "Right Leg")
+            else if (pickedUp == "Right Leg")
             {
-                rightLeg.SetActive(true);
+                //rightLeg.SetActive(true);
+                rightLegRender.enabled = true;
             }
 
-            else if (toChange == "Torso")
+            else if (pickedUp == "Torso")
             {
-                Ribs.SetActive(true);
-                Hips.SetActive(true);
+                //Ribs.SetActive(true);
+                //Hips.SetActive(true);
+
+                RibsRender.enabled = true;
+                HipsRender.enabled = true;
             }
 
-            else if (toChange == "Head")
+            else if (pickedUp == "Head")
             {
-                Head.SetActive(true);
+                //Head.SetActive(true);
+                HeadRender.enabled = true;
             }
         }
-
     }
 
     public void TakeFromPile()
