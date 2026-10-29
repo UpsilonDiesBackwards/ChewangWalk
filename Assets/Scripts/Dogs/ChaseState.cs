@@ -22,7 +22,7 @@ public class ChaseState : DogState
     {
         NavMeshAgent dogAgent = dog.dogAgent;
         dogAgent.speed = chaseSpeed;
-        dogAgent.autoBraking = false;
+        //dogAgent.autoBraking = false;
         repathTimer = 0f;
         sightTimer = timeout;
     }

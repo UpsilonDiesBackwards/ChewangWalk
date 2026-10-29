@@ -87,57 +87,57 @@ MonoBehaviour:
   player: {fileID: 0}
   dogBed: {fileID: 0}
   patrol:
-    maxDistance: 300
+    maxDistance: 200
     minDistance: 6
     minIdleTime: 1
     maxIdleTime: 2.5
     timeout: 20
-    navMeshRadius: 60
+    navMeshRadius: 3
     maxAttempts: 25
     patrolSpeed: 15
-    patrolProximityRange: 120
-    patrolSightRange: 240
+    patrolProximityRange: 1.5
+    patrolSightRange: 60
     patrolAngleRange: 180
-    patrolSmellRange: 150
+    patrolSmellRange: 15
   chase:
     dogHeight: 1.5
     visionBlockers:
       serializedVersion: 2
       m_Bits: 4294967295
-    chaseSpeed: 60
+    chaseSpeed: 30
     repathInterval: 0.25
     timeout: 0.1
-    chaseProximityRange: 480
-    chaseSightRange: 240
+    chaseProximityRange: 30
+    chaseSightRange: 120
     chaseAngleRange: 180
   search:
-    maxDistance: 225
+    maxDistance: 50
     minDistance: 6
     minIdleTime: 1
     maxIdleTime: 2.5
     timeout: 20
     navMeshRadius: 3
     maxAttempts: 10
-    searchSpeed: 7
-    searchProximityRange: 10
-    searchSightRange: 40
+    searchSpeed: 21
+    searchProximityRange: 30
+    searchSightRange: 120
     searchAngleRange: 180
-    searchSmellRange: 10
+    searchSmellRange: 30
   track:
-    trackSpeed: 2
-    trackProximityRange: 10
-    trackSightRange: 40
+    trackSpeed: 6
+    trackProximityRange: 30
+    trackSightRange: 120
     trackAngleRange: 180
-    trackSmellRange: 10
+    trackSmellRange: 30
     sniffInterval: 0.2
     maxScentChecks: 10
-    dogHeight: 0.5
+    dogHeight: 1.5
   attack:
     dogHeight: 1.5
     blockers:
       serializedVersion: 2
       m_Bits: 4294967295
-    attackRange: 2.5
+    attackRange: 5
     attackAngle: 90
   currentStateName: 
 --- !u!136 &1002062206941145270
