@@ -4,7 +4,7 @@ using UnityEngine.AI;
 [System.Serializable]
 public class SearchState : DogState
 {
-   public float maxDistance = 50f;
+   public float maxDistance = 75f;
     public float minDistance = 2f;
     public float minIdleTime = 1f;
     public float maxIdleTime = 2.5f;

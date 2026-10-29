@@ -9,14 +9,14 @@ public class PatrolState : DogState
     public float minIdleTime = 1f;
     public float maxIdleTime = 2.5f;
     public float timeout = 20f;
-    public float navMeshRadius = 1f;
-    public int maxAttempts = 10;
-    public float patrolSpeed = 5f;
-    public float patrolProximityRange = 5f;
-    public float patrolSightRange = 20f;
+    public float navMeshRadius = 20f;
+    public int maxAttempts = 25;
+    public float patrolSpeed = 10f;
+    public float patrolProximityRange = 40f;
+    public float patrolSightRange = 80f;
     [Tooltip("this is the full range of the vision cone so for example 180 means the dog can see 90 degrees both ways")]
     public float patrolAngleRange = 180f;
-    public float patrolSmellRange = 5f;
+    public float patrolSmellRange = 75f;
     
     enum Phase { Idle, Moving }
 

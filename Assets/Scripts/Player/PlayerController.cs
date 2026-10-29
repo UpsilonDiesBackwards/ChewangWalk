@@ -126,9 +126,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    public void Move(Vector2 moveVector)
-    {
-
+    public void Move(Vector2 moveVector) {
         if (moveVector.x > 0 || moveVector.x < 0)
         {
             thisObject.transform.LookAt(thisObject.transform.position + new Vector3(moveVector.x, 0, 0));
