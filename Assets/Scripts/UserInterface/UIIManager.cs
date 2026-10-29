@@ -42,7 +42,7 @@ public class UIIManager : MonoBehaviour {
         
         rupert.sprite = ruperts[specificRupert];
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.5f);
         
         rupert.gameObject.SetActive(false);
     }
