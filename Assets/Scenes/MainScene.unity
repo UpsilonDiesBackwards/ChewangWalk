@@ -23415,7 +23415,7 @@ Transform:
   m_GameObject: {fileID: 207713184}
   serializedVersion: 2
   m_LocalRotation: {x: 0.17364816, y: 0, z: 0, w: 0.9848078}
-  m_LocalPosition: {x: 5, y: 25, z: -50}
+  m_LocalPosition: {x: 5, y: 27.24, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -110655,7 +110655,7 @@ Transform:
   m_GameObject: {fileID: 1067472748}
   serializedVersion: 2
   m_LocalRotation: {x: 0.17364816, y: 0, z: 0, w: 0.9848078}
-  m_LocalPosition: {x: 999.99, y: 5, z: 50.75}
+  m_LocalPosition: {x: 999.99, y: 5.448, z: 50.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -152323,7 +152323,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2f40ee7dbbf033b4697ba874c4d9ed69, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.24
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2f40ee7dbbf033b4697ba874c4d9ed69, type: 3}
       propertyPath: m_LocalPosition.z
@@ -168437,8 +168437,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5.97, y: 13.2, z: 5.1}
-  m_Center: {x: 0, y: 6.31, z: 0.39}
+  m_Size: {x: 7.5, y: 14.3, z: 8}
+  m_Center: {x: 0, y: 6.31, z: -0.64}
 --- !u!54 &1709797455
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -168447,7 +168447,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1502973925}
   serializedVersion: 5
-  m_Mass: 2
+  m_Mass: 3.5
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -168506,8 +168506,8 @@ MonoBehaviour:
     value: 0.15
   controller: {fileID: 1709797456}
   thisObject: {fileID: 1502973925}
-  MovementSpeed: 20
-  JumpForce: 5
+  MovementSpeed: 15
+  JumpForce: 15
   CameraDirection: {fileID: 207713185}
   pickupRange: 10
   rightArm: {fileID: 1502973932}
