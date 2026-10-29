@@ -8,6 +8,7 @@ public class AttackState : DogState
     public LayerMask blockers = ~0;
     public float attackRange = 2.5f;
     public float attackAngle = 90f;
+    private string stolenBone = " ";
     
     public override void Enter()
     {
@@ -20,68 +21,67 @@ public class AttackState : DogState
             {
                 if (playerController.CheckDictionaryValue("Right Leg"))
                 {
-                    playerController.ShowHideBone("Right Leg");
-                    playerController.ChangeDictionaryValues("Right Leg", false);
+                   stolenBone = "Right Leg";
                 }
                 else if (playerController.CheckDictionaryValue("Left Leg"))
                 {
-                    playerController.ShowHideBone("Left Leg");
-                    playerController.ChangeDictionaryValues("Left Leg", false);
+                    stolenBone = "Left Leg";
                 }
                 else if (playerController.CheckDictionaryValue("Right Arm"))
                 {
-                    playerController.ShowHideBone("Right Arm");
-                    playerController.ChangeDictionaryValues("Right Arm", false);
+                    stolenBone = "Right Arm";
                 }
                 else if (playerController.CheckDictionaryValue("Left Arm"))
                 {
-                    playerController.ShowHideBone("Left Arm");
-                    playerController.ChangeDictionaryValues("Left Arm", false);
+                    stolenBone = "Left Arm";
                 }
                 else if (playerController.CheckDictionaryValue("Torso"))
                 {
-                    playerController.ShowHideBone("Torso");
-                    playerController.ChangeDictionaryValues("Torso", false);
+                    stolenBone = "Torso";
+                }
+                else if (playerController.CheckDictionaryValue("Head"))
+                {
+                    stolenBone = "Head";
                 }
                 else
                 {
-                    playerController.ShowHideBone("Head");
-                    playerController.ChangeDictionaryValues("Head", false);
+                    stolenBone = null;
                 }
             }
             else
             {
                 if (playerController.CheckDictionaryValue("Left Leg"))
                 {
-                    playerController.ShowHideBone("Left Leg");
-                    playerController.ChangeDictionaryValues("Left Leg", false);
+                    stolenBone = "Left Leg";
                 }
                 else if (playerController.CheckDictionaryValue("Right Leg"))
                 {
-                    playerController.ShowHideBone("Right Leg");
-                    playerController.ChangeDictionaryValues("Right Leg", false);
+                    stolenBone = "Right Leg";
                 }
                 else if (playerController.CheckDictionaryValue("Left Arm"))
                 {
-                    playerController.ShowHideBone("Left Arm");
-                    playerController.ChangeDictionaryValues("Left Arm", false);
+                    stolenBone = "Left Arm";
                 }
                 else if (playerController.CheckDictionaryValue("Right Arm"))
                 {
-                    playerController.ShowHideBone("Right Arm");
-                    playerController.ChangeDictionaryValues("Right Arm", false);
+                    stolenBone = "Right Arm";
                 }
                 else if (playerController.CheckDictionaryValue("Torso"))
                 {
-                    playerController.ShowHideBone("Torso");
-                    playerController.ChangeDictionaryValues("Torso", false);
+                    stolenBone = "Torso";
+                }
+                else if (playerController.CheckDictionaryValue("Head"))
+                {
+                    stolenBone = "Head";
                 }
                 else
                 {
-                    playerController.ShowHideBone("Head");
-                    playerController.ChangeDictionaryValues("Head", false);
+                    stolenBone = null;
                 }
             }
+            
+            playerController.ShowHideBone(stolenBone);
+            playerController.ChangeDictionaryValues(stolenBone, false);
         }
         
         Transform dogBed = stateMachine.dogBed;
@@ -99,9 +99,9 @@ public class AttackState : DogState
 
     public override void Exit()
     {
-        /*
-         * triggers logic for dropping bone
-         */
+        BonePile bonePile = stateMachine.dogBed.GetComponent<BonePile>();
+        bonePile.AddBone(stolenBone);
+        dog.Stop();
     }
 
     public bool PlayerCaught()
