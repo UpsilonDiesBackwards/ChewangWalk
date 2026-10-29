@@ -26468,7 +26468,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 234669724}
-  - component: {fileID: 234669725}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -26493,19 +26492,6 @@ Transform:
   - {fileID: 207713185}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &234669725
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 234669723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bb0cdb1b35c2bf43b79f52f90a60105, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerScent
-  lifetime: 120
 --- !u!43 &235795409
 Mesh:
   m_ObjectHideFlags: 0
@@ -57412,8 +57398,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1674923997}
     - target: {fileID: 1157727676683257549, guid: 54ef91c4d66d6874db1a50ba840186d5, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1709797458}
+    - target: {fileID: 1157727676683257549, guid: 54ef91c4d66d6874db1a50ba840186d5, type: 3}
       propertyPath: search.maxDistance
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4354217085037378962, guid: 54ef91c4d66d6874db1a50ba840186d5, type: 3}
+      propertyPath: m_Acceleration
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4354217085037378962, guid: 54ef91c4d66d6874db1a50ba840186d5, type: 3}
+      propertyPath: m_AngularSpeed
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 7226140107294169542, guid: 54ef91c4d66d6874db1a50ba840186d5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -110183,7 +110181,7 @@ MonoBehaviour:
   m_LayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_UseGeometry: 0
+  m_UseGeometry: 1
   m_DefaultArea: 0
   m_GenerateLinks: 0
   m_IgnoreNavMeshAgent: 1
@@ -146854,6 +146852,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2f40ee7dbbf033b4697ba874c4d9ed69, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1709797454}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2f40ee7dbbf033b4697ba874c4d9ed69, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1709797460}
   m_SourcePrefab: {fileID: 100100000, guid: 2f40ee7dbbf033b4697ba874c4d9ed69, type: 3}
 --- !u!1 &1502973925 stripped
 GameObject:
@@ -163510,8 +163511,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 8.32, y: 9.3, z: 6.66}
-  m_Center: {x: 0, y: 4.53, z: -4.96}
+  m_Size: {x: 5.97, y: 13.2, z: 5.1}
+  m_Center: {x: 0, y: 6.31, z: 0.39}
 --- !u!54 &1709797455
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -163595,6 +163596,19 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2f40ee7dbbf033b4697ba874c4d9ed69, type: 3}
   m_PrefabInstance: {fileID: 1502973924}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1709797460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1502973925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bb0cdb1b35c2bf43b79f52f90a60105, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerScent
+  lifetime: 120
 --- !u!43 &1710085124
 Mesh:
   m_ObjectHideFlags: 0
