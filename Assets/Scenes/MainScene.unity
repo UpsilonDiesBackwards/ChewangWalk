@@ -88838,7 +88838,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 150239964}
   m_SourcePrefab: {fileID: 100100000, guid: 815945f2fdd5f0a439cdc6d75ff471d8, type: 3}
-<<<<<<< Updated upstream
 --- !u!43 &719157829
 Mesh:
   m_ObjectHideFlags: 0
@@ -89018,7 +89017,6 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
-=======
 --- !u!1001 &719255448
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89172,7 +89170,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54ef91c4d66d6874db1a50ba840186d5, type: 3}
->>>>>>> Stashed changes
 --- !u!1 &719845546
 GameObject:
   m_ObjectHideFlags: 0
@@ -196932,8 +196929,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
-<<<<<<< Updated upstream
-=======
 --- !u!1 &1882973812 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2329880786519283302, guid: 815945f2fdd5f0a439cdc6d75ff471d8, type: 3}
@@ -197253,7 +197248,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 54ef91c4d66d6874db1a50ba840186d5, type: 3}
->>>>>>> Stashed changes
 --- !u!1 &1883581316
 GameObject:
   m_ObjectHideFlags: 0
