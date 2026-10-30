@@ -1,3 +1,5 @@
+using FMOD;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,6 +11,8 @@ public class AttackState : DogState
     public float attackRange = 2.5f;
     public float attackAngle = 90f;
     private string stolenBone = " ";
+    
+    public EventReference BarkSound;
     
     public override void Enter()
     {
@@ -90,6 +94,8 @@ public class AttackState : DogState
         {
             dog.Move(dogBed.position);
         }
+        
+        AudioManager.Instance.PlayOneShot(BarkSound);
     }
 
     public override void Tick()

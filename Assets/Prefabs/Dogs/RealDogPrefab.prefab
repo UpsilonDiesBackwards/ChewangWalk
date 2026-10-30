@@ -110,6 +110,13 @@ MonoBehaviour:
     chaseProximityRange: 30
     chaseSightRange: 40
     chaseAngleRange: 180
+    GrowlSound:
+      Guid:
+        Data1: -310214635
+        Data2: 1323605451
+        Data3: 1481925026
+        Data4: 486866019
+      Path: event:/Dog/Growl
   search:
     maxDistance: 50
     minDistance: 6
@@ -139,6 +146,13 @@ MonoBehaviour:
       m_Bits: 4294967295
     attackRange: 5
     attackAngle: 90
+    BarkSound:
+      Guid:
+        Data1: -654872201
+        Data2: 1205171328
+        Data3: 131180723
+        Data4: 1872298098
+      Path: event:/Dog/Bark
   currentStateName: 
 --- !u!136 &1002062206941145270
 CapsuleCollider:

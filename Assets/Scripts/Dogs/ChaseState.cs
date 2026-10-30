@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,6 +16,8 @@ public class ChaseState : DogState
     public float chaseProximityRange = 160f;
     public float chaseSightRange = 80f;
     public float chaseAngleRange = 180f;
+
+    public EventReference GrowlSound;
     
     enum Phase { sighted, losing }
     Phase phase;
@@ -25,6 +29,8 @@ public class ChaseState : DogState
         dogAgent.autoBraking = false;
         repathTimer = 0f;
         sightTimer = timeout;
+
+        AudioManager.Instance.PlayOneShot(GrowlSound);
     }
 
     public override void Tick()
@@ -104,7 +110,6 @@ public class ChaseState : DogState
             bool spotted = hit.transform == player || hit.transform.IsChildOf(player);
             return spotted;
         }
-         
         return false;
     }
 }
