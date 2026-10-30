@@ -3,7 +3,6 @@ using JetBrains.Annotations;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
