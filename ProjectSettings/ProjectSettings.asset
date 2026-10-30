@@ -915,11 +915,11 @@ PlayerSettings:
   activeInputHandler: 1
   windowsGamepadBackendHint: 0
   enableDirectStorage: 0
-  cloudProjectId: 90798e00-bc03-4107-a252-d0d37183f915
+  cloudProjectId: 7fba9d0c-8b14-448d-a155-0d57c96acf7b
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: ChewangWalk
-  organizationId: greycatgamesstudio
+  projectName: 'Chewang Bones: It''s a Hell of a Walk'
+  organizationId: wheelermerlin
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
